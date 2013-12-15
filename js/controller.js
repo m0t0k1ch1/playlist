@@ -10,7 +10,8 @@ var mainCtrl = function($scope) {
       }
       $scope.$apply();
       for (var i in playlists) {
-        var playlistScope = angular.element(document.getElementById('playlist' + i)).scope();
+        var playlistScopeElement = document.getElementById('playlist' + i);
+        var playlistScope        = angular.element(playlistScopeElement).scope();
         playlistScope.playlistId = playlists[i].id;
       }
     });
@@ -28,7 +29,8 @@ var playlistCtrl = function($scope) {
     var playlistId = $scope.playlistId;
     SC.get('/playlists/' + playlistId, {}, function(playlist) {
       var tracks = playlist.tracks;
-      var mainScope = angular.element(document.getElementById('mainScope')).scope();
+      var mainScopeElement = document.getElementById('mainScope');
+      var mainScope        = angular.element(mainScopeElement).scope();
       mainScope.showTracks(tracks);
       $scope.$apply();
     });
