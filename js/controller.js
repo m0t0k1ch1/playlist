@@ -9,6 +9,10 @@ var mainCtrl = function($scope) {
         $scope.playlists.push(playlists[i]);
       }
       $scope.$apply();
+      for (var i in playlists) {
+        var playlistScope = angular.element(document.getElementById('playlist' + i)).scope();
+        playlistScope.playlistId = playlists[i].id;
+      }
     });
   }
 

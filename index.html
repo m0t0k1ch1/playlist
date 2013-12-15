@@ -13,13 +13,10 @@
       <input type="submit" value="search" />
     </form>
     <ul>
-      <li ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
+      <li id="playlist{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
         <img src="{{playlist.artwork_url}}" />
         {{playlist.title}} made by {{playlist.user.username}}
-        <form novalidate name="playlistForm" ng-submit="getTracks()">
-          <input type="hidden" name="playlistId" value="{{playlist.id}}" ng-model="playlistId" />
-          <input type="submit" value="load" />
-        </form>
+        <button ng-click="getTracks()">load</button>
       </li>
     </ul>
     <ul>
