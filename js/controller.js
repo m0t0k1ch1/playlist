@@ -15,8 +15,8 @@ var mainCtrl = function($scope)
   }
 
   $scope.showTracks = function(tracks) {
+    $scope.tracks = [];
     for (var i in tracks) {
-      $scope.tracks = [];
       $scope.tracks.push(tracks[i]);
     }
     $scope.$apply();
