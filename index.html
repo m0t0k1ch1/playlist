@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <title>playlist</title>
-  <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
   <script src="js/controller.js"></script>
 </head>
 <body>
   <div ng-controller="mainCtrl">
     <form novalidate name="keywordForm" ng-submit="searchPlaylists()">
-      <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
+      <input type="text" id="keyword" name="keyword" placeholder="keyword" ng-model="keyword" />
       <input type="submit" value="search" />
     </form>
     <ul id="searchResult">
       <li ng-repeat="playlist in playlists">
         <img src="{{playlist.artwork_url}}" />
         {{playlist.title}} made by {{playlist.user.username}}
-        <button ng-click="load">load</button>
+        <button ng-click="load()">load</button>
       </li>
     </ul>
+    <div id='sample'>
+      <span>hojdlkacjskds;jc;adsjc;adlsc</span>
+    </div>
+    <button ng-click="clear()">clear</button>
   </div>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script>

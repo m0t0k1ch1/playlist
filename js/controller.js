@@ -6,10 +6,9 @@ var mainCtrl = function($scope) {
         });
     }
     $scope.showPlaylists = function(playlists) {
-        alert('hoge');
         for (var i in playlists) {
             $scope.playlists.push(playlists[i]);
         }
-        $scope.keyword = '';
+        angular.element(document.getElementById('keyword')).val('');
     }
 }
