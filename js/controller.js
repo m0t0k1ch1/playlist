@@ -20,6 +20,7 @@ var mainCtrl = function($scope) {
     for (var i in tracks) {
       $scope.tracks.push(tracks[i]);
     }
+    $scope.$apply();
   }
 }
 
@@ -31,7 +32,6 @@ var playlistCtrl = function($scope) {
       var mainScopeElement = document.getElementById('mainScope');
       var mainScope        = angular.element(mainScopeElement).scope();
       mainScope.showTracks(tracks);
-      $scope.$apply();
     });
   }
 }
