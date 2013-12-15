@@ -12,6 +12,13 @@
       <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
       <input type="submit" value="search" />
     </form>
+    <ul>
+      <li ng-repeat="playlist in playlists">
+        <img src="{{playlist.artwork_url}}" />
+        {{playlist.title}} made by {{playlist.user.username}}
+        <button ng-click="load">load</button>
+      </li>
+    </ul>
   </div>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script>
