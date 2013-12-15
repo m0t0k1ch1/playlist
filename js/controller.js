@@ -4,8 +4,8 @@ var mainCtrl = function($scope) {
         SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
             for (var i in playlists) {
                 $scope.playlists.push(playlists[i]);
-                console.log('piyo');
             }
+            $scope.$apply();
         });
     }
 }
