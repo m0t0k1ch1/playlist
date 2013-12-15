@@ -1,7 +1,5 @@
-var mainCtrl = function($scope) {
-  $scope.playlists = [];
-  $scope.tracks    = [];
-
+var mainCtrl = function($scope)
+{
   $scope.searchPlaylists = function() {
     $scope.playlists = [];
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
@@ -24,10 +22,10 @@ var mainCtrl = function($scope) {
   }
 }
 
-var playlistCtrl = function($scope) {
+var playlistCtrl = function($scope)
+{
   $scope.getTracks = function() {
-    var playlistId = $scope.playlistId;
-    SC.get('/playlists/' + playlistId, {}, function(playlist) {
+    SC.get('/playlists/' + $scope.playlistId, {}, function(playlist) {
       var tracks = playlist.tracks;
       var mainScopeElement = document.getElementById('mainScope');
       var mainScope        = angular.element(mainScopeElement).scope();
