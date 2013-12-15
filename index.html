@@ -7,16 +7,25 @@
   <script src="js/controller.js"></script>
 </head>
 <body>
-  <div ng-controller="mainCtrl">
+  <div id="mainScope" ng-controller="mainCtrl">
     <form novalidate name="keywordForm" ng-submit="searchPlaylists()">
       <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
       <input type="submit" value="search" />
     </form>
     <ul>
-      <li ng-repeat="playlist in playlists">
+      <li ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
         <img src="{{playlist.artwork_url}}" />
         {{playlist.title}} made by {{playlist.user.username}}
-        <button ng-click="load()">load</button>
+        <form novalidate name="playlistForm" ng-submit="getTracks()">
+          <input type="hidden" name="playlistId" value="{{playlist.id}}" ng-model="playlistId" />
+          <input type="submit" value="load" />
+        </form>
+      </li>
+    </ul>
+    <ul>
+      <li ng-repeat="track in tracks">
+        <img src="{{track.artwork_utl}}" />
+        {{track.title}}
       </li>
     </ul>
   </div>
