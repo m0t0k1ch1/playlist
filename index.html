@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+<head>
+  <meta charset="utf-8" />
+  <title>playlist</title>
+  <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+  <script src="js/controller.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <form novalidate name="keywordForm" ng-submit="searchPlaylist()">
+      <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
+      <input type="submit" value="search" />
+    </form>
+  </div>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script>
+   SC.initialize({
+     client_id: '736b11a3d717676cfc27bf601e165617'
+   });
+  </script>
+</body>
