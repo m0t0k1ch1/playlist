@@ -1,32 +1,32 @@
 var mainCtrl = function($scope) {
+  $scope.playlists = [];
+  $scope.tracks    = [];
+
+  $scope.searchPlaylists = function() {
     $scope.playlists = [];
-    $scope.tracks    = [];
+    SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
+      for (var i in playlists) {
+        $scope.playlists.push(playlists[i]);
+      }
+      $scope.$apply();
+    });
+  }
 
-    $scope.searchPlaylists = function() {
-        $scope.playlists = [];
-        SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
-            for (var i in playlists) {
-                $scope.playlists.push(playlists[i]);
-            }
-            $scope.$apply();
-        });
+  $scope.showTracks = function(tracks) {
+    for (var i in tracks) {
+      $scope.tracks.push(tracks[i]);
     }
-
-    $scope.showTracks = function(tracks) {
-        for (var i in tracks) {
-            $scope.tracks.push(tracks[i]);
-        }
-    }
+  }
 }
 
 var playlistCtrl = function($scope) {
-    $scope.getTracks = function() {
-        var playlistId = $scope.playlistId;
-        SC.get('/playlists/' + playlistId, {}, function(playlist) {
-            var mainScope = angular.element(document.getElementById('mainScope')).scope();
-            var tracks = playlist.tracks;
-            mainScope.showTracks(tracks);
-            $scope.$apply();
-        });
-    }
+  $scope.getTracks = function() {
+    var playlistId = $scope.playlistId;
+    SC.get('/playlists/' + playlistId, {}, function(playlist) {
+      var tracks = playlist.tracks;
+      var mainScope = angular.element(document.getElementById('mainScope')).scope();
+      mainScope.showTracks(tracks);
+      $scope.$apply();
+    });
+  }
 }
