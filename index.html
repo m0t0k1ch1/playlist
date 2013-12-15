@@ -12,7 +12,7 @@
       <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
       <input type="submit" value="search" />
     </form>
-    <ul>
+    <ul id="searchResult">
       <li ng-repeat="playlist in playlists">
         <img src="{{playlist.artwork_url}}" />
         {{playlist.title}} made by {{playlist.user.username}}
