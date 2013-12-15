@@ -21,7 +21,7 @@ var mainCtrl = function($scope) {
 
 var playlistCtrl = function($scope) {
     $scope.getTracks = function() {
-        var mainScope = angular.element('#mainScope').scope();
+        var mainScope = angular.element(mainScope).scope();
         var playlistId = $scope.playlistId;
         SC.get('/playlists/' + playlistId, {}, function(playlist) {
             var tracks = playlist.tracks;
