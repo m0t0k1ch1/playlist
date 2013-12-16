@@ -1,9 +1,5 @@
 var mainCtrl = function($scope)
 {
-  var iframeElement = document.querySelector('iframe');
-  var widget        = SC.Widget(iframeElement);
-  var widgetOptions = { color: '8c8c8c' };
-
   $scope.searchPlaylists = function() {
     $scope.playlists = [];
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
@@ -25,10 +21,6 @@ var mainCtrl = function($scope)
     }
     $scope.$apply();
   }
-
-  $scope.setTrack = function(track) {
-    widget.load(track.uri, widgetOptions);
-  }
 }
 
 var playlistCtrl = function($scope)
@@ -40,5 +32,12 @@ var playlistCtrl = function($scope)
       var mainScope        = angular.element(mainScopeElement).scope();
       mainScope.showTracks(tracks);
     });
+  }
+}
+
+var trackCtrl = function($scope)
+{
+  $scope.setTrack = function() {
+    widget.load($scope.track.uri);
   }
 }

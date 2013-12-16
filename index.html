@@ -23,11 +23,11 @@
         <button ng-click="getTracks()">load</button>
       </li>
     </ul>
-    <ul ng-cloak >
-      <li ng-repeat="track in tracks">
+    <ul ng-cloak>
+      <li ng-repeat="track in tracks" ng-controller="trackCtrl">
         <img src="{{track.artwork_url}}" />
         {{track.title}} - {{track.uri}}
-        <button ng-click="setTrack({{track}})">play</button>
+        <button ng-click="setTrack()">play</button>
       </li>
     </ul>
   </div>
