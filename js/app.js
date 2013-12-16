@@ -1,5 +1,9 @@
 var mainCtrl = function($scope)
 {
+  var iframeElement = document.querySelector('iframe');
+  var widget        = SC.Widget(iframeElement);
+  var widgetOptions = { color: '8c8c8c' };
+
   $scope.searchPlaylists = function() {
     $scope.playlists = [];
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
@@ -20,6 +24,10 @@ var mainCtrl = function($scope)
       $scope.tracks.push(tracks[i]);
     }
     $scope.$apply();
+  }
+
+  $scope.setTrack = function(track) {
+    widget.load(track.uri, widgetOptions);
   }
 }
 

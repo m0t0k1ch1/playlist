@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <title>playlist</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
-  <script src="js/app.js"></script>
   <link rel="stylesheet" type="text/css" href="css/app.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script src="js/soundcloud-player-api.js"></script>
+  <script src="js/app.js"></script>
 </head>
 <body>
   <div id="mainScope" ng-controller="mainCtrl">
+    <iframe width="100%" height="166" scrolling="no" frameborder="no"></iframe>
     <form novalidate name="keywordForm" ng-submit="searchPlaylists()">
       <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
       <input type="submit" value="search" />
@@ -24,13 +27,24 @@
       <li ng-repeat="track in tracks">
         <img src="{{track.artwork_url}}" />
         {{track.title}} - {{track.uri}}
+        <button ng-click="setTrack(track)"></button>
       </li>
     </ul>
   </div>
-  <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script>
    SC.initialize({
      client_id: '736b11a3d717676cfc27bf601e165617'
+   });
+
+   var iframeElement = document.querySelector('iframe');
+   iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856&color=8c8c8c';
+
+   var widget = SC.Widget(iframeElement);
+   widget.bind(SC.Widget.Events.READY, function() {
+     widget.play();
+   });
+   widget.bind(SC.Widget.Events.FINISH, function() {
+     widget.play();
    });
   </script>
 </body>
