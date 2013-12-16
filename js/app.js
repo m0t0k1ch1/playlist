@@ -1,3 +1,21 @@
+function init()
+{
+  var clientId   = '736b11a3d717676cfc27bf601e165617';
+  var defaultSrc = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
+
+  SC.initialize({
+    client_id: clientId,
+  });
+
+  var iframeElement = document.querySelector('iframe');
+  iframeElement.src = defaultSrc;
+
+  var widget = SC.Widget(iframeElement);
+  widget.bind(SC.Widget.Events.FINISH, function() {
+    widget.play();
+  });
+}
+
 var mainCtrl = function($scope)
 {
   $scope.searchPlaylists = function() {
