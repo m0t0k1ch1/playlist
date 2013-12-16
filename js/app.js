@@ -39,5 +39,6 @@ var trackCtrl = function($scope)
 {
   $scope.setTrack = function() {
     widget.load($scope.track.uri);
+    widget.play();
   }
 }

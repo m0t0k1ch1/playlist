@@ -40,9 +40,6 @@
    iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856&color=8c8c8c';
 
    var widget = SC.Widget(iframeElement);
-   widget.bind(SC.Widget.Events.READY, function() {
-     widget.play();
-   });
    widget.bind(SC.Widget.Events.FINISH, function() {
      widget.play();
    });
