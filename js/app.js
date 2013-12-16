@@ -5,11 +5,12 @@ var mainCtrl = function($scope)
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
       var playlistScopeElement, playlistScope;
       for (var i in playlists) {
-        $scope.playlists.push(playlists[i]);
+        var playlist = playlists[i];
+        $scope.playlists.push(playlist);
         $scope.$apply();
         playlistScopeElement     = document.getElementById('playlist' + i);
         playlistScope            = angular.element(playlistScopeElement).scope();
-        playlistScope.playlistId = playlists[i].id;
+        playlistScope.playlistId = playlist.id;
       }
     });
   }
