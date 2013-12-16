@@ -27,7 +27,7 @@
       <li ng-repeat="track in tracks">
         <img src="{{track.artwork_url}}" />
         {{track.title}} - {{track.uri}}
-        <button ng-click="setTrack(track)"></button>
+        <button ng-click="setTrack({{track}})">play</button>
       </li>
     </ul>
   </div>
