@@ -40,7 +40,6 @@ var trackCtrl = function($scope)
 {
   $scope.setTrack = function() {
     widget.load($scope.track.uri, {
-      color: "8c8c8c",
       auto_play: true,
     });
   }
