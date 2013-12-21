@@ -63,20 +63,16 @@ var trackCtrl = function($scope)
 
   $scope.addToMyTrack = function() {
     myTracksScope.myTracks.push($scope.track);
-    myTracksScope.updateMaxIndex();
+    myTracksScope.maxIndex++;
   }
 }
 
 var myTracksCtrl = function($scope)
 {
   $scope.index      = 0;
-  $scope.maxIndex   = 0;
+  $scope.myTrackNum = 0;
   $scope.repeatMode = 'song';
   $scope.myTracks   = [];
-
-  $scope.updateMaxIndex = function() {
-    $scope.maxIndex = $scope.myTracks.length - 1;
-  }
 
   $scope.play = function() {
     var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
@@ -85,7 +81,7 @@ var myTracksCtrl = function($scope)
 
   $scope.prev = function() {
     if ($scope.index == 0) {
-      $scope.index = $scope.maxIndex;
+      $scope.index = $scope.myTrackNum - 1;
     } else {
       $scope.index--;
     }
@@ -93,7 +89,7 @@ var myTracksCtrl = function($scope)
   }
 
   $scope.next = function() {
-    if ($scope.index == $scope.maxIndex) {
+    if ($scope.index == $scope.myTrackNum - 1) {
       $scope.index = 0;
     } else {
       $scope.index++;
@@ -116,7 +112,7 @@ var myTracksCtrl = function($scope)
         $scope.index--;
       }
     }
-    $scope.updateMaxIndex();
+    $scope.myTrackNum--;
   }
 }
 
