@@ -17,11 +17,12 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <form novalidate name="keywordForm" class="inline-form" ng-submit="searchPlaylists()">
-            <div class="form-fields">
-              <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
+          <form novalidate name="keywordForm" class="form-inline" role="form" ng-submit="searchPlaylists()">
+            <div class="form-group">
+              <label class="sr-only" for="inputKeyword">keyword</label>
+              <input type="text" name="keyword" id="inputKeyword" class="form-control" placeholder="keyword" ng-model="keyword" />
             </div>
-            <input type="submit" class="btn" value="search" />
+            <button type="submit" class="btn">search</button>
           </form>
           <ul ng-cloak>
             <li id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
@@ -38,7 +39,7 @@
                 </td>
                 <td>
                   {{$index}}. {{track.title}} - {{track.uri}}
-                  <button ng-click="addToMyTrack()">add</button>
+                  <button class="btn" ng-click="addToMyTrack()">add</button>
                 </td>
               </tr>
             </table>
