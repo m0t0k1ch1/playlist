@@ -30,7 +30,6 @@ var mainCtrl = function($scope)
         $scope.playlists.push(playlist);
       }
       $scope.$apply();
-      tracksScope.$apply();
     });
   }
 }
@@ -69,7 +68,7 @@ var trackCtrl = function($scope)
   var myTracksScope = angular.element('#my_tracks').scope();
 
   $scope.addToMyTrack = function() {
-    myTracksScope.myTracks.push($scope.track);
+    myTracksScope.myTracks.push($scope.track.clone());
     myTracksScope.myTrackNum++;
   }
 }
