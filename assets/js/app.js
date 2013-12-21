@@ -63,7 +63,9 @@ var trackCtrl = function($scope)
 
   $scope.addToMyTrack = function() {
     myTracksScope.myTracks.push($scope.track);
-    myTracksScope.maxIndex++;
+    if (myTracksScope.maxIndex > 0) {
+      myTracksScope.maxIndex++;
+    }
   }
 }
 
