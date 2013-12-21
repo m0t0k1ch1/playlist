@@ -7,10 +7,10 @@ body {
 }
 
 table {
-    margin: 0;
+    margin: 0 !important;
 }
 
 #keywordForm {
-    padding-bottom: 5px;
+    margin: 0 0 5px;
 }
 
