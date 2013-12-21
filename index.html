@@ -25,7 +25,7 @@
             <button type="submit" class="btn">search</button>
           </form>
           <br />
-          <table ng-cloak>
+          <table class="table" ng-cloak>
             <tr id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
               <td><img src="{{playlist.artwork_url}}" /></td>
               <td><strong>{{playlist.title}}</strong><br />made by {{playlist.user.username}}</td>
