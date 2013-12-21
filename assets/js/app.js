@@ -63,6 +63,7 @@ var trackCtrl = function($scope)
 
   $scope.addToMyTrack = function() {
     myTracksScope.myTracks.push($scope.track);
+    myTracksScope.maxIndex++;
   }
 }
 
@@ -120,5 +121,6 @@ var myTrackCtrl = function($scope)
     mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
     });
+    mainScope.$apply();
   }
 }
