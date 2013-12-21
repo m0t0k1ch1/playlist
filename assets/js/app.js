@@ -108,7 +108,7 @@ var myTracksCtrl = function($scope)
   $scope.remove = function(index) {
     $scope.myTracks.splice(index, 1);
     if (index <= $scope.index) {
-      if (index > 0) {
+      if ($scope.index > 0) {
         $scope.index--;
       }
     }
@@ -124,6 +124,5 @@ var myTrackCtrl = function($scope)
     mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
     });
-    mainScope.$apply();
   }
 }
