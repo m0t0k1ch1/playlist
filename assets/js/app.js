@@ -110,6 +110,7 @@ var myTracksCtrl = function($scope)
       $scope.index--;
     }
     $scope.maxIndex--;
+    $scope.$apply();
   }
 }
 
