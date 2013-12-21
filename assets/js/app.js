@@ -45,9 +45,12 @@ var playlistCtrl = function($scope)
 
 var tracksCtrl = function($scope)
 {
+  var mainScope = angular.element('#main').scope();
+
   $scope.tracks = [];
 
   $scope.showTracks = function(tracks) {
+    mainScope.playlists = [];
     $scope.tracks = [];
     $scope.maxIndex = tracks.length - 1;
     for (var i in tracks) {
