@@ -63,7 +63,7 @@ var trackCtrl = function($scope)
 
   $scope.addToMyTrack = function() {
     myTracksScope.myTracks.push($scope.track);
-    myTracksScope.maxIndex = myTracksScope.myTracks.length - 1;
+    myTracksScope.updateMaxIndex();
   }
 }
 
@@ -73,6 +73,10 @@ var myTracksCtrl = function($scope)
   $scope.maxIndex   = 0;
   $scope.repeatMode = 'song';
   $scope.myTracks   = [];
+
+  $scope.updateMaxIndex = function() {
+    $scope.maxIndex = $scope.myTracks.length - 1;
+  }
 
   $scope.play = function() {
     var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
@@ -108,9 +112,11 @@ var myTracksCtrl = function($scope)
   $scope.remove = function(index) {
     $scope.myTracks.splice(index, 1);
     if (index <= $scope.index) {
-      $scope.index--;
+      if (index > 0) {
+        $scope.index--;
+      }
     }
-    $scope.maxIndex--;
+    $scope.updateMaxIndex();
   }
 }
 
