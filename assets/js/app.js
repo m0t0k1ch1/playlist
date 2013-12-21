@@ -14,6 +14,7 @@ var mainCtrl = function($scope)
     }
     else if (myTracksScope.repeatMode == 'playlist') {
       myTracksScope.next();
+      $scope.$apply();
     }
   });
 
