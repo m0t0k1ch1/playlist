@@ -68,7 +68,7 @@ var trackCtrl = function($scope)
   var myTracksScope = angular.element('#my_tracks').scope();
 
   $scope.addToMyTrack = function() {
-    myTracksScope.myTracks.push($scope.track.clone());
+    myTracksScope.myTracks.push(angular.copy($scope.track));
     myTracksScope.myTrackNum++;
   }
 }
