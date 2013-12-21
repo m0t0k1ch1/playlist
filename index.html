@@ -10,7 +10,7 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <div id="mainScope" ng-controller="mainCtrl">
+  <div id="main" ng-controller="mainCtrl">
     <iframe width="100%" height="166" scrolling="no" frameborder="no"></iframe>
     <form novalidate name="keywordForm" ng-submit="searchPlaylists()">
       <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
@@ -23,13 +23,27 @@
         <button ng-click="getTracks()">load</button>
       </li>
     </ul>
-    <ul ng-cloak>
-      <li ng-repeat="track in tracks" ng-controller="trackCtrl">
-        <img src="{{track.artwork_url}}" />
-        {{track.title}} - {{track.uri}}
-        <button ng-click="setTrack()">play</button>
-      </li>
-    </ul>
+    <div id='tracks' ng-controller="tracksCtrl">
+      <table ng-cloak>
+        <tr colspan="2">
+          <button ng-click="play()">play</button>
+          <button ng-click="prev()">prev</button>
+          <button ng-click="next()">next</button>
+          <button ng-click="repeatSong()">repeat song</button>
+          <button ng-click="repeatPlaylist()">repeat playlist</button>
+          index: {{index}}
+          repeat mode: {{repeatMode}}
+        </tr>
+        <tr id="track{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
+          <td>
+            <img src="{{track.artwork_url}}" />
+          </td>
+          <td>
+            {{$index}}. {{track.title}} - {{track.uri}}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   <script>
    SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
@@ -37,9 +51,16 @@
    var iframeElement = document.querySelector('iframe');
    iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
 
+   var tracksScopeElement = document.getElementById('tracks');
+   var tracksScope        = angular.element(tracksScopeElement).scope();
+
    var widget = SC.Widget(iframeElement);
    widget.bind(SC.Widget.Events.FINISH, function() {
-     widget.play();
+     if (tracks.repeatMode == 'song') {
+       tracksScope.play();
+     } else if (tracks.repeatMode == 'playlist') {
+       tracksScope.next();
+     }
    });
   </script>
 </body>
