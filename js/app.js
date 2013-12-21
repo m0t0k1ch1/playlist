@@ -54,7 +54,7 @@ var tracksCtrl = function($scope)
   $scope.tracks     = [];
 
   $scope.showTracks = function(tracks) {
-    $scope.index = maxIndex;
+    $scope.maxIndex = tracks.length - 1;
     for (var i in tracks) {
       $scope.tracks.push(tracks[i]);
     }
