@@ -35,7 +35,7 @@ var mainCtrl = function($scope)
 
 var playlistCtrl = function($scope)
 {
-  var tracksScope = angular.element($('#tracks')).scope();
+  var tracksScope = angular.element('#tracks').scope();
 
   $scope.getTracks = function() {
     SC.get('/playlists/' + $scope.playlistId, {}, function(playlist) {
@@ -47,7 +47,10 @@ var playlistCtrl = function($scope)
 
 var tracksCtrl = function($scope)
 {
+  $scope.tracks = [];
+
   $scope.showTracks = function(tracks) {
+    $scope.tracks = [];
     $scope.maxIndex = tracks.length - 1;
     for (var i in tracks) {
       $scope.tracks.push(tracks[i]);
@@ -58,7 +61,7 @@ var tracksCtrl = function($scope)
 
 var trackCtrl = function($scope)
 {
-  var myTracksScope = angular.element($('#my_tracks')).scope();
+  var myTracksScope = angular.element('#my_tracks').scope();
 
   $scope.addToMyTrack = function() {
     myTracksScope.tracks
@@ -73,8 +76,7 @@ var myTracksCtrl = function($scope)
   $scope.myTracks     = [];
 
   $scope.play = function() {
-    var trackScopeElement = document.getElementById('track_' + $scope.index);
-    var trackScope        = angular.element(trackScopeElement).scope();
+    var trackScope = angular.element('#my_track_' + $scope.index).scope();
     trackScope.setTrack();
   }
 
@@ -107,8 +109,7 @@ var myTracksCtrl = function($scope)
 
 var myTrackCtrl = function($scope)
 {
-  var mainScopeElement = document.getElementById('main');
-  var mainScope        = angular.element(mainScopeElement).scope();
+  var mainScope = angular.element('#main').scope();
 
   $scope.setTrack = function() {
     mainScope.widget.load($scope.track.uri, {
