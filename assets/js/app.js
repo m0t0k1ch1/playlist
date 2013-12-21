@@ -24,12 +24,11 @@ var mainCtrl = function($scope)
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
       $scope.playlists   = [];
-      tracksScope.tracks = [];
       for (var i in playlists) {
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
         $scope.$apply();
-        tracksScope.$apply();
+        tracksScope.showTracks([]);
       }
     });
   }
