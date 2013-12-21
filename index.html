@@ -61,7 +61,9 @@
                 <td colspan="2">index: {{index}} / max index: {{maxIndex}} / repeat mode: {{repeatMode}}</td>
               </tr>
               <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
-                <td><img src="{{myTrack.artwork_url}}" /></td>
+                <td>
+                  <img src="{{myTrack.artwork_url}}" />
+                </td>
                 <td>
                   {{myTrack.title}}
                   <button ng-click="remove({{$index}})">remove</button>

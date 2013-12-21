@@ -71,7 +71,7 @@ var myTracksCtrl = function($scope)
   $scope.index      = 0;
   $scope.maxIndex   = 0;
   $scope.repeatMode = 'song';
-  $scope.myTracks     = [];
+  $scope.myTracks   = [];
 
   $scope.play = function() {
     var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
@@ -116,13 +116,9 @@ var myTracksCtrl = function($scope)
 
 var myTrackCtrl = function($scope)
 {
-  var mainScope     = angular.element('#main').scope();
-  var myTracksScope = angular.element('#my_tracks').scope();
-
   $scope.set = function() {
     mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
     });
-    mainScope.$apply();
   }
 }
