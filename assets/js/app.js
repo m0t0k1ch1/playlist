@@ -104,15 +104,6 @@ var myTracksCtrl = function($scope)
   $scope.repeatPlaylist = function() {
     $scope.repeatMode = 'playlist';
   }
-
-  $scope.remove = function(index) {
-    $scope.myTracks.splice(index, 1);
-    if (index <= $scope.index) {
-      $scope.index--;
-    }
-    $scope.maxIndex--;
-    $scope.$apply();
-  }
 }
 
 var myTrackCtrl = function($scope)
@@ -124,5 +115,9 @@ var myTrackCtrl = function($scope)
       auto_play: true,
     });
     mainScope.$apply();
+  }
+
+  $scope.remove = function(index) {
+    alert(index);
   }
 }
