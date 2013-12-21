@@ -75,7 +75,7 @@ var myTracksCtrl = function($scope)
 
   $scope.play = function() {
     var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
-    myTrackScope.setTrack();
+    myTrackScope.set();
   }
 
   $scope.prev = function() {
@@ -103,13 +103,22 @@ var myTracksCtrl = function($scope)
   $scope.repeatPlaylist = function() {
     $scope.repeatMode = 'playlist';
   }
+
+  $scope.remove = function(index) {
+    $scope.myTracks.splice(index, 1);
+    if (index <= $scope.index) {
+      $scope.index--;
+    }
+    $scope.maxIndex--;
+  }
 }
 
 var myTrackCtrl = function($scope)
 {
-  var mainScope = angular.element('#main').scope();
+  var mainScope     = angular.element('#main').scope();
+  var myTracksScope = angular.element('#my_tracks').scope();
 
-  $scope.setTrack = function() {
+  $scope.set = function() {
     mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
     });
