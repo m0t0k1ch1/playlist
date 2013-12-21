@@ -28,7 +28,7 @@ var mainCtrl = function($scope)
         var playlistScope        = angular.element(playlistScopeElement).scope();
         $scope.playlists.push(playlist);
         $scope.$apply();
-        playlistScope(i).playlistId = playlist.id;
+        playlistScope.playlistId = playlist.id;
       }
     });
   }
