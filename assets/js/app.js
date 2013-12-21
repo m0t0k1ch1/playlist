@@ -17,8 +17,6 @@ var mainCtrl = function($scope)
     }
   });
 
-  var tracksScope = angular.element('#tracks').scope();
-
   $scope.playlists = [];
 
   $scope.searchPlaylists = function() {
@@ -28,7 +26,6 @@ var mainCtrl = function($scope)
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
       }
-      tracksScope.showTracks([]);
       $scope.$apply();
     });
   }
