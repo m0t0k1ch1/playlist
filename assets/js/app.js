@@ -28,8 +28,8 @@ var mainCtrl = function($scope)
       for (var i in playlists) {
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
-        $scope.$apply();
       }
+      $scope.$apply();
     });
   }
 }
