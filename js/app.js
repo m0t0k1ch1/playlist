@@ -69,12 +69,20 @@ var tracksCtrl = function($scope)
   }
 
   $scope.prev = function() {
-    $scope.index--;
+    if ($scope.index == 0) {
+      $scope.index = $scope.maxIndex;
+    } else {
+      $scope.index--;
+    }
     $scope.play();
   }
 
   $scope.next = function() {
-    $scope.index++;
+    if ($scope.index == $scope.maxIndex) {
+      $scope.index = 0;
+    } else {
+      $scope.index++;
+    }
     $scope.play();
   }
 
