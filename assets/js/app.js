@@ -15,7 +15,6 @@ var mainCtrl = function($scope)
     else if (myTracksScope.repeatMode == 'playlist') {
       myTracksScope.next();
     }
-    $scope.$apply();
   });
 
   var tracksScope = angular.element('#tracks').scope();
