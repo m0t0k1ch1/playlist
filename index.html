@@ -31,15 +31,13 @@
               <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
           </table>
-          <div id='tracks' ng-controller="tracksCtrl">
-            <table ng-cloak class="table">
-              <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
-                <td><img src="{{track.artwork_url}}" /></td>
-                <td>{{track.title}}</td>
-                <td><button class="btn btn-default" ng-click="addToMyTrack()"><span class="glyphicon glyphicon-plus"></span></button></td>
-              </tr>
-            </table>
-          </div>
+          <table id="tracks" ng-cloak class="table" ng-controller="tracksCtrl">
+            <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
+              <td><img src="{{track.artwork_url}}" /></td>
+              <td>{{track.title}}</td>
+              <td><button class="btn btn-default" ng-click="addToMyTrack()"><span class="glyphicon glyphicon-plus"></span></button></td>
+            </tr>
+          </table>
         </div>
         <div class="col-md-6">
           <div id='my_tracks' ng-controller="myTracksCtrl">
