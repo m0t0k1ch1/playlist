@@ -3,7 +3,7 @@ var mainCtrl = function($scope)
   SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
 
   var player          = document.querySelector('iframe');
-  var defaultTrackUrl = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
+  var defaultTrackUrl = 'https://soundcloud.com/djtatsu_sendai_jp/jazztronik-samurai-dj';
   player.src = defaultTrackUrl;
 
   $scope.widget = SC.Widget(player);
