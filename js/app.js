@@ -3,6 +3,7 @@ var mainCtrl = function($scope)
   $scope.playlists = [];
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
+      $scope.playlists = [];
       for (var i in playlists) {
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
