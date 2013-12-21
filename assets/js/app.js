@@ -17,11 +17,14 @@ var mainCtrl = function($scope)
     }
   });
 
+  var tracksScope = angular.element('#tracks').scope();
+
   $scope.playlists = [];
 
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
-      $scope.playlists = [];
+      $scope.playlists   = [];
+      tracksScope.tracks = [];
       for (var i in playlists) {
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
@@ -51,8 +54,8 @@ var tracksCtrl = function($scope)
 
   $scope.showTracks = function(tracks) {
     mainScope.playlists = [];
-    $scope.tracks = [];
-    $scope.maxIndex = tracks.length - 1;
+    $scope.tracks       = [];
+    $scope.maxIndex     = tracks.length - 1;
     for (var i in tracks) {
       $scope.tracks.push(tracks[i]);
     }
