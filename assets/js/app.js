@@ -117,6 +117,8 @@ var myTracksCtrl = function($scope)
 
 var myTrackCtrl = function($scope)
 {
+  var mainScope = angular.element('#main').scope();
+
   $scope.set = function() {
     mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
