@@ -1,6 +1,25 @@
 var mainCtrl = function($scope)
 {
+  var iframeElement = document.querySelector('iframe');
+  iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
+
+  var widget = SC.Widget(iframeElement);
+  widget.bind(SC.Widget.Events.FINISH, function() {
+    var tracksScopeElement = document.getElementById('tracks');
+    var tracksScope        = angular.element(tracksScopeElement).scope();
+    if (tracksScope.repeatMode == 'song') {
+      tracksScope.play();
+    } else if (tracksScope.repeatMode == 'playlist') {
+      tracksScope.next();
+    }
+  });
+
   $scope.playlists = [];
+
+  $scope.init = function() {
+    SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
+  }
+
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
       $scope.playlists = [];
@@ -32,10 +51,12 @@ var playlistCtrl = function($scope)
 var tracksCtrl = function($scope)
 {
   $scope.index      = 0;
+  $scope.maxIndex   = 0;
   $scope.repeatMode = 'song';
   $scope.tracks     = [];
 
   $scope.showTracks = function(tracks) {
+    $scope.index = maxIndex;
     for (var i in tracks) {
       $scope.tracks.push(tracks[i]);
     }

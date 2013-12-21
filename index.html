@@ -4,10 +4,6 @@
   <meta charset="utf-8" />
   <title>repeat-beat</title>
   <link rel="stylesheet" type="text/css" href="css/app.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
-  <script src="http://connect.soundcloud.com/sdk.js"></script>
-  <script src="js/soundcloud-player-api.js"></script>
-  <script src="js/app.js"></script>
 </head>
 <body>
   <div id="main" ng-controller="mainCtrl">
@@ -31,7 +27,8 @@
           <button ng-click="next()">next</button>
           <button ng-click="repeatSong()">repeat song</button>
           <button ng-click="repeatPlaylist()">repeat playlist</button>
-          index: {{index}}
+          index: {{index}} /
+          max index: {{maxIndex}} /
           repeat mode: {{repeatMode}}
         </tr>
         <tr id="track{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
@@ -45,23 +42,9 @@
       </table>
     </div>
   </div>
-  <script>
-   SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
-
-   var iframeElement = document.querySelector('iframe');
-   iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
-
-   var tracksScopeElement = document.getElementById('tracks');
-   var tracksScope        = angular.element(tracksScopeElement).scope();
-
-   var widget = SC.Widget(iframeElement);
-   widget.bind(SC.Widget.Events.FINISH, function() {
-     if (tracks.repeatMode == 'song') {
-       tracksScope.play();
-     } else if (tracks.repeatMode == 'playlist') {
-       tracksScope.next();
-     }
-   });
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script src="js/soundcloud-player-api.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
