@@ -24,23 +24,19 @@
             </div>
             <button type="submit" class="btn">search</button>
           </form>
-          <ul ng-cloak>
-            <li id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
-              <img src="{{playlist.artwork_url}}" />
-              {{playlist.title}} made by {{playlist.user.username}}
-              <button class="btn" ng-click="getTracks()">load</button>
-            </li>
-          </ul>
+          <table ng-cloak>
+            <tr id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
+              <td><img src="{{playlist.artwork_url}}" /></td>
+              <td><strong>{{playlist.title}}</strong><br />made by {{playlist.user.username}}</td>
+              <td><button class="btn" ng-click="getTracks()">load</button></td>
+            </tr>
+          </table>
           <div id='tracks' ng-controller="tracksCtrl">
             <table ng-cloak class="table">
               <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
-                <td>
-                  <img src="{{track.artwork_url}}" />
-                </td>
-                <td>
-                  {{$index}}. {{track.title}} - {{track.uri}}
-                  <button class="btn" ng-click="addToMyTrack()">add</button>
-                </td>
+                <td><img src="{{track.artwork_url}}" /></td>
+                <td>{{track.title}}</td>
+                <td><button class="btn" ng-click="addToMyTrack()">add</button></td>
               </tr>
             </table>
           </div>
@@ -49,7 +45,7 @@
           <div id='my_tracks' ng-controller="myTracksCtrl">
             <table ng-cloak class="table">
               <tr>
-                <td colspan="2">
+                <td colspan="3">
                   <button class="btn" ng-click="play()">play</button>
                   <button class="btn" ng-click="prev()">prev</button>
                   <button class="btn" ng-click="next()">next</button>
@@ -58,16 +54,12 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2">index: {{index}} / max index: {{maxIndex}} / repeat mode: {{repeatMode}}</td>
+                <td colspan="3">index: {{index}} / max index: {{maxIndex}} / repeat mode: {{repeatMode}}</td>
               </tr>
               <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
-                <td>
-                  <img src="{{myTrack.artwork_url}}" />
-                </td>
-                <td>
-                  {{myTrack.title}}
-                  <button class="btn" ng-click="remove($index)">remove</button>
-                </td>
+                <td><img src="{{myTrack.artwork_url}}" /></td>
+                <td>{{myTrack.title}}</td>
+                <td><button class="btn" ng-click="remove($index)">remove</button></td>
               </tr>
             </table>
           </div>
