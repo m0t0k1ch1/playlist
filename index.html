@@ -31,7 +31,7 @@
               <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
           </table>
-          <table id="tracks" ng-cloak class="table" ng-controller="tracksCtrl">
+          <table id="tracks" class="table" ng-cloak ng-controller="tracksCtrl">
             <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
               <td><img src="{{track.artwork_url}}" /></td>
               <td>{{track.title}}</td>
