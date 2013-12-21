@@ -1,5 +1,7 @@
 var mainCtrl = function($scope)
 {
+  SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
+
   var iframeElement = document.querySelector('iframe');
   iframeElement.src = 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/91249856';
 
@@ -15,10 +17,6 @@ var mainCtrl = function($scope)
   });
 
   $scope.playlists = [];
-
-  $scope.init = function() {
-    SC.initialize({ client_id: '736b11a3d717676cfc27bf601e165617' });
-  }
 
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
