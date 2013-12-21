@@ -26,8 +26,6 @@ var mainCtrl = function($scope)
         var playlist = playlists[i];
         $scope.playlists.push(playlist);
         $scope.$apply();
-        var playlistScope = angular.element('#playlist_' + i).scope();
-        playlistScope.playlistId = playlist.id;
       }
     });
   }
@@ -38,7 +36,7 @@ var playlistCtrl = function($scope)
   var tracksScope = angular.element('#tracks').scope();
 
   $scope.getTracks = function() {
-    SC.get('/playlists/' + $scope.playlistId, {}, function(playlist) {
+    SC.get('/playlists/' + $scope.playlist.id, {}, function(playlist) {
       var tracks = playlist.tracks;
       tracksScope.showTracks(tracks);
     });
@@ -76,8 +74,8 @@ var myTracksCtrl = function($scope)
   $scope.myTracks     = [];
 
   $scope.play = function() {
-    var trackScope = angular.element('#my_track_' + $scope.index).scope();
-    trackScope.setTrack();
+    var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
+    myTrackScope.setTrack();
   }
 
   $scope.prev = function() {
@@ -112,7 +110,7 @@ var myTrackCtrl = function($scope)
   var mainScope = angular.element('#main').scope();
 
   $scope.setTrack = function() {
-    mainScope.widget.load($scope.track.uri, {
+    mainScope.widget.load($scope.myTrack.uri, {
       auto_play: true,
     });
     mainScope.$apply();
