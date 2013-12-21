@@ -64,7 +64,7 @@ var trackCtrl = function($scope)
   var myTracksScope = angular.element('#my_tracks').scope();
 
   $scope.addToMyTrack = function() {
-    myTracksScope.tracks
+    myTracksScope.tracks.push($scope.track);
   }
 }
 
