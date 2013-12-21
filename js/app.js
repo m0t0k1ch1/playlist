@@ -23,12 +23,12 @@ var mainCtrl = function($scope)
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
       $scope.playlists = [];
       for (var i in playlists) {
-        var playlist = playlists[i];
-        $scope.playlists.push(playlist);
-        $scope.$apply();
+        var playlist             = playlists[i];
         var playlistScopeElement = document.getElementById('playlist' + i);
         var playlistScope        = angular.element(playlistScopeElement).scope();
-        playlistScope.playlistId = playlist.id;
+        $scope.playlists.push(playlist);
+        $scope.$apply();
+        playlistScope(i).playlistId = playlist.id;
       }
     });
   }
@@ -41,8 +41,7 @@ var playlistCtrl = function($scope)
 
   $scope.getTracks = function() {
     SC.get('/playlists/' + $scope.playlistId, {}, function(playlist) {
-      var tracks = playlist.tracks;
-      tracksScope.showTracks(tracks);
+      tracksScope.showTracks(playlist.tracks);
     });
   }
 }
