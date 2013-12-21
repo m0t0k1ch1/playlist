@@ -95,7 +95,7 @@ var trackCtrl = function($scope)
   $scope.setTrack = function() {
     mainScope.widget.load($scope.track.uri, {
       auto_play: true,
-      mainScope.$apply();
     });
+    mainScope.$apply();
   }
 }
