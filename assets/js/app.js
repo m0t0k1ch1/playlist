@@ -30,6 +30,7 @@ var mainCtrl = function($scope)
         $scope.playlists.push(playlist);
       }
       $scope.$apply();
+      tracksScope.$apply();
     });
   }
 }
