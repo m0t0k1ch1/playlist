@@ -4,75 +4,75 @@
   <title>repeat-beat</title>
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="assets/css/normalize.css" />
-  <link rel="stylesheet" href="assets/css/font-awesome.css" />
-  <link rel="stylesheet" href="assets/css/furatto.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/app.css" />
 </head>
 <body>
-  <div id="main" ng-controller="mainCtrl">
-    <div class="row">
-      <div class="col-12">
-        <iframe id="player" width="100%" height="166" scrolling="no" frameborder="no"></iframe>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <form novalidate name="keywordForm" class="inline-form" ng-submit="searchPlaylists()">
-          <div class="form-fields">
-            <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
-          </div>
-          <input type="submit" class="btn" value="search" />
-        </form>
-        <ul ng-cloak>
-          <li id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
-            <img src="{{playlist.artwork_url}}" />
-            {{playlist.title}} made by {{playlist.user.username}}
-            <button ng-click="getTracks()">load</button>
-          </li>
-        </ul>
-        <div id='tracks' ng-controller="tracksCtrl">
-          <table ng-cloak class="table">
-            <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
-              <td>
-                <img src="{{track.artwork_url}}" />
-              </td>
-              <td>
-                {{$index}}. {{track.title}} - {{track.uri}}
-                <button ng-click="addToMyTrack()">add</button>
-              </td>
-            </tr>
-          </table>
+  <div class="container">
+    <div id="main" ng-controller="mainCtrl">
+      <div class="row">
+        <div class="col-md-12">
+          <iframe id="player" width="100%" height="166" scrolling="no" frameborder="no"></iframe>
         </div>
       </div>
-      <div class="col-6">
-        <div id='my_tracks' ng-controller="myTracksCtrl">
-          <table ng-cloak class="table">
-            <tr>
-              <td colspan="2">
-                <button class="btn" ng-click="play()">play</button>
-                <button class="btn" ng-click="prev()">prev</button>
-                <button class="btn" ng-click="next()">next</button>
-                <button class="btn" ng-click="repeatSong()">repeat song</button>
-                <button class="btn" ng-click="repeatPlaylist()">repeat playlist</button>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                index: {{index}} /
-                max index: {{maxIndex}} /
-                repeat mode: {{repeatMode}}
-              </td>
-            </tr>
-            <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
-              <td>
-                <img src="{{myTrack.artwork_url}}" />
-              </td>
-              <td>
-                {{$index}}. {{myTrack.title}} - {{myTrack.uri}}
-              </td>
-            </tr>
-          </table>
+      <div class="row">
+        <div class="col-md-6">
+          <form novalidate name="keywordForm" class="inline-form" ng-submit="searchPlaylists()">
+            <div class="form-fields">
+              <input type="text" name="keyword" placeholder="keyword" ng-model="keyword" />
+            </div>
+            <input type="submit" class="btn" value="search" />
+          </form>
+          <ul ng-cloak>
+            <li id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
+              <img src="{{playlist.artwork_url}}" />
+              {{playlist.title}} made by {{playlist.user.username}}
+              <button ng-click="getTracks()">load</button>
+            </li>
+          </ul>
+          <div id='tracks' ng-controller="tracksCtrl">
+            <table ng-cloak class="table">
+              <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
+                <td>
+                  <img src="{{track.artwork_url}}" />
+                </td>
+                <td>
+                  {{$index}}. {{track.title}} - {{track.uri}}
+                  <button ng-click="addToMyTrack()">add</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id='my_tracks' ng-controller="myTracksCtrl">
+            <table ng-cloak class="table">
+              <tr>
+                <td colspan="2">
+                  <button class="btn" ng-click="play()">play</button>
+                  <button class="btn" ng-click="prev()">prev</button>
+                  <button class="btn" ng-click="next()">next</button>
+                  <button class="btn" ng-click="repeatSong()">repeat song</button>
+                  <button class="btn" ng-click="repeatPlaylist()">repeat playlist</button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  index: {{index}} /
+                  max index: {{maxIndex}} /
+                  repeat mode: {{repeatMode}}
+                </td>
+              </tr>
+              <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
+                <td>
+                  <img src="{{myTrack.artwork_url}}" />
+                </td>
+                <td>
+                  {{$index}}. {{myTrack.title}} - {{myTrack.uri}}
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
   <script src="https://connect.soundcloud.com/sdk.js"></script>
   <script src="assets/js/soundcloud-player-api.js"></script>
-  <script src="assets/js/furatto.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
