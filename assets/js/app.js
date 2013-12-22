@@ -17,15 +17,13 @@ var mainCtrl = function($scope)
     }
   });
 
-  var tracksScope = angular.element('#tracks').scope();
-
   $scope.playlists = [];
+  $scope.tracks    = [];
 
   $scope.searchPlaylists = function() {
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
-      console.log(tracksScope.tracks);
-      $scope.playlists   = [];
-      tracksScope.tracks = [];
+      $scope.playlists = [];
+      $scope.tracks    = [];
       for (var i in playlists) {
         $scope.playlists.push(playlists[i]);
       }
@@ -36,29 +34,18 @@ var mainCtrl = function($scope)
 
 var playlistCtrl = function($scope)
 {
-  var tracksScope = angular.element('#tracks').scope();
+  var mainScope = angular.element('#main').scope();
 
   $scope.getTracks = function() {
     SC.get('/playlists/' + $scope.playlist.id, {}, function(playlist) {
+      mainScope.playlists = [];
+      mainScope.tracks    = [];
       var tracks = playlist.tracks;
-      tracksScope.showTracks(tracks);
+      for (var i in tracks) {
+          $scope.tracks.push(tracks[i]);
+      }
+      $scope.$apply();
     });
-  }
-}
-
-var tracksCtrl = function($scope)
-{
-  var mainScope = angular.element('#main').scope();
-
-  $scope.tracks = [];
-
-  $scope.showTracks = function(tracks) {
-    mainScope.playlists = [];
-    $scope.tracks       = [];
-    for (var i in tracks) {
-      $scope.tracks.push(tracks[i]);
-    }
-    $scope.$apply();
   }
 }
 
