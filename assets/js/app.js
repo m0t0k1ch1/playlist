@@ -29,7 +29,6 @@ var mainCtrl = function($scope)
         $scope.playlists.push(playlists[i]);
       }
       $scope.$apply();
-      console.log(tracksScope.tracks);
     });
   }
 }
@@ -59,6 +58,7 @@ var tracksCtrl = function($scope)
       $scope.tracks.push(tracks[i]);
     }
     $scope.$apply();
+    console.log($scope.tracks);
   }
 }
 
