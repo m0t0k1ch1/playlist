@@ -26,8 +26,7 @@ var mainCtrl = function($scope)
       $scope.playlists   = [];
       tracksScope.tracks = [];
       for (var i in playlists) {
-        var playlist = playlists[i];
-        $scope.playlists.push(playlist);
+        $scope.playlists.push(playlists[i]);
       }
       $scope.$apply();
     });
