@@ -36,6 +36,11 @@
                 </form>
               </td>
             </tr>
+            <tr>
+              <td colspan="3" class="text-center">
+                <img src="assets/img/loader.gif" id="loader" />
+              </td>
+            </tr>
             <tr id="playlist-{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
               <td class="left"><img src="{{playlist.artwork_url}}" /></td>
               <td><span class="text-muted">{{playlist.user.username}}</span><br /><strong>{{playlist.title}}</strong></td>

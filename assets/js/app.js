@@ -23,10 +23,12 @@ var mainCtrl = function($scope)
   $scope.searchPlaylists = function() {
     $scope.playlists = [];
     $scope.tracks    = [];
+    $('#loader').show();
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
       for (var i in playlists) {
         $scope.playlists.push(playlists[i]);
       }
+      $('#loader').hide();
       $scope.$apply();
     });
   }
@@ -39,11 +41,13 @@ var playlistCtrl = function($scope)
   $scope.getTracks = function() {
     mainScope.playlists = [];
     mainScope.tracks    = [];
+    $('#loader').show();
     SC.get('/playlists/' + $scope.playlist.id, {}, function(playlist) {
       var tracks = playlist.tracks;
       for (var i in tracks) {
           $scope.tracks.push(tracks[i]);
       }
+      $('#loader').hide();
       $scope.$apply();
     });
   }
