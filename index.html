@@ -24,22 +24,22 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <form novalidate name="keywordForm" id="keywordForm" class="form-inline" role="form" ng-submit="searchPlaylists()">
+          <form novalidate name="keyword-form" id="keyword-form" class="form-inline" role="form" ng-submit="searchPlaylists()">
             <div class="form-group">
-              <label class="sr-only" for="inputKeyword">keyword</label>
-              <input type="text" name="keyword" id="inputKeyword" class="form-control" placeholder="keyword" ng-model="keyword" />
+              <label class="sr-only" for="input-keyword">keyword</label>
+              <input type="text" name="keyword" id="input-keyword" class="form-control" placeholder="keyword" ng-model="keyword" />
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
           </form>
           <table class="table" ng-cloak>
-            <tr id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
+            <tr id="playlist-{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
               <td><img src="{{playlist.artwork_url}}" /></td>
               <td><strong>{{playlist.title}}</strong><br />made by {{playlist.user.username}}</td>
               <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
           </table>
           <table class="table" ng-cloak>
-            <tr id="track_{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
+            <tr id="track-{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
               <td><img src="{{track.artwork_url}}" /></td>
               <td>{{track.title}}</td>
               <td><button class="btn btn-default" ng-click="addToMyTrack()"><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -47,7 +47,7 @@
           </table>
         </div>
         <div class="col-md-6">
-          <div id='my_tracks' ng-controller="myTracksCtrl">
+          <div id="my-tracks" ng-controller="myTracksCtrl">
             <table ng-cloak class="table">
               <tr>
                 <td colspan="3">
@@ -58,7 +58,7 @@
                   <button id="btn-repeat-playlist" class="btn btn-default btn-repeat" ng-click="repeatPlaylist()"><img src="assets/img/repeat-playlist.png" class="icon-repeat" /><img</button>
                 </td>
               </tr>
-              <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
+              <tr id="my-track-{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
                 <td><img src="{{myTrack.artwork_url}}" /></td>
                 <td>{{myTrack.title}}</td>
                 <td><button class="btn btn-default" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"></span></button></td>

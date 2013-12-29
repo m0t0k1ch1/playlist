@@ -8,7 +8,7 @@ var mainCtrl = function($scope)
 
   $scope.widget = SC.Widget(player);
   $scope.widget.bind(SC.Widget.Events.FINISH, function() {
-    var myTracksScope = angular.element('#my_tracks').scope();
+    var myTracksScope = angular.element('#my-tracks').scope();
     if (myTracksScope.repeatMode == 'song') {
       myTracksScope.play();
     }
@@ -51,7 +51,7 @@ var playlistCtrl = function($scope)
 
 var trackCtrl = function($scope)
 {
-  var myTracksScope = angular.element('#my_tracks').scope();
+  var myTracksScope = angular.element('#my-tracks').scope();
 
   $scope.addToMyTrack = function() {
     myTracksScope.myTracks.push(angular.copy($scope.track));
@@ -67,26 +67,32 @@ var myTracksCtrl = function($scope)
   $scope.myTracks   = [];
 
   $scope.play = function() {
-    var myTrackScope = angular.element('#my_track_' + $scope.index).scope();
+    var myTrackId    = '#my-track-' + $scope.index;
+    var myTrackScope = angular.element(myTrackId).scope();
     myTrackScope.set();
+    $(myTrackId).addClass('active');
   }
 
   $scope.prev = function() {
+    var beforeIndex = $scope.index;
     if ($scope.index == 0) {
       $scope.index = $scope.myTrackNum - 1;
     } else {
       $scope.index--;
     }
     $scope.play();
+    $('#my-track-' + beforeIndex).removeClass('active');
   }
 
   $scope.next = function() {
+    var beforeIndex = $scope.index;
     if ($scope.index == $scope.myTrackNum - 1) {
       $scope.index = 0;
     } else {
       $scope.index++;
     }
     $scope.play();
+    $('#my-track-' + beforeIndex).removeClass('active');
   }
 
   $scope.repeatSong = function() {
