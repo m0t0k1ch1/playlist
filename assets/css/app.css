@@ -14,8 +14,11 @@ td.right {
     width: 40px;
 }
 
-img#loader {
+#loader {
     display: none;
+}
+
+#loader img {
     margin: 20px;
     width: 40px;
 }
