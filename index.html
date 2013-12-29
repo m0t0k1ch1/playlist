@@ -32,10 +32,10 @@
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
           </form>
           <table class="table" ng-cloak>
-            <tr id="playlist_{{$index}}" class="row" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
-              <td class="col-md-1"><img src="{{playlist.artwork_url}}" /></td>
-              <td class="col-md-4"><strong>{{playlist.title}}</strong><br />made by {{playlist.user.username}}</td>
-              <td class="col-md-1"><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
+            <tr id="playlist_{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
+              <td><img src="{{playlist.artwork_url}}" /></td>
+              <td><strong>{{playlist.title}}</strong><br />made by {{playlist.user.username}}</td>
+              <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
           </table>
           <table class="table" ng-cloak>
