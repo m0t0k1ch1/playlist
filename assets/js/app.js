@@ -91,10 +91,14 @@ var myTracksCtrl = function($scope)
 
   $scope.repeatSong = function() {
     $scope.repeatMode = 'song';
+    $('#btn-repeat-song').addClass('active');
+    $('#btn-repeat-playlist').removeClass('active');
   }
 
   $scope.repeatPlaylist = function() {
     $scope.repeatMode = 'playlist';
+    $('#btn-repeat-song').removeClass('active');
+    $('#btn-repeat-playlist').addClass('active');
   }
 
   $scope.remove = function(index) {

@@ -10,3 +10,11 @@ table {
     margin: 0 0 5px;
 }
 
+img.icon-repeat {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-repeat {
+    padding: 4px 7px;
+}

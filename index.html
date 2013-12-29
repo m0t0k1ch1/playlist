@@ -54,12 +54,9 @@
                   <button class="btn btn-default" ng-click="play()"><span class="glyphicon glyphicon-play"></span></button>
                   <button class="btn btn-default" ng-click="prev()"><span class="glyphicon glyphicon-backward"></span></button>
                   <button class="btn btn-default" ng-click="next()"><span class="glyphicon glyphicon-forward"></span></button>
-                  <button class="btn btn-default" ng-click="repeatSong()"><span class="glyphicon glyphicon-music"></span> repeat song</span></button>
-                  <button class="btn btn-default" ng-click="repeatPlaylist()"><span class="glyphicon glyphicon-list"></span> repeat playlist</button>
+                  <button id="btn-repeat-song" class="btn btn-default btn-repeat active" ng-click="repeatSong()"><img src="assets/img/repeat-song.png" class="icon-repeat" /></button>
+                  <button id="btn-repeat-playlist" class="btn btn-default btn-repeat" ng-click="repeatPlaylist()"><img src="assets/img/repeat-playlist.png" class="icon-repeat" /><img</button>
                 </td>
-              </tr>
-              <tr>
-                <td colspan="3">repeat mode：{{repeatMode}}</td>
               </tr>
               <tr id="my_track_{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
                 <td><img src="{{myTrack.artwork_url}}" /></td>
