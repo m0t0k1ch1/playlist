@@ -51,11 +51,13 @@
             <table ng-cloak class="table">
               <tr>
                 <td colspan="3">
-                  <button class="btn btn-default" ng-click="play()"><span class="glyphicon glyphicon-play"></span></button>
-                  <button class="btn btn-default" ng-click="prev()"><span class="glyphicon glyphicon-backward"></span></button>
-                  <button class="btn btn-default" ng-click="next()"><span class="glyphicon glyphicon-forward"></span></button>
-                  <button id="btn-repeat-song" class="btn btn-default btn-repeat active" ng-click="repeatSong()"><img src="assets/img/repeat-song.png" class="icon-repeat" /></button>
-                  <button id="btn-repeat-playlist" class="btn btn-default btn-repeat" ng-click="repeatPlaylist()"><img src="assets/img/repeat-playlist.png" class="icon-repeat" /><img</button>
+                  <div class="btn-group">
+                    <button class="btn btn-default" ng-click="play()"><span class="glyphicon glyphicon-play"></span></button>
+                    <button class="btn btn-default" ng-click="prev()"><span class="glyphicon glyphicon-backward"></span></button>
+                    <button class="btn btn-default" ng-click="next()"><span class="glyphicon glyphicon-forward"></span></button>
+                    <button id="btn-repeat-song" class="btn btn-default btn-repeat active" ng-click="repeatSong()"><img src="assets/img/repeat-song.png" class="icon-repeat" /></button>
+                    <button id="btn-repeat-playlist" class="btn btn-default btn-repeat" ng-click="repeatPlaylist()"><img src="assets/img/repeat-playlist.png" class="icon-repeat" /><img</button>
+                  </div>
                 </td>
               </tr>
               <tr id="my-track-{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
