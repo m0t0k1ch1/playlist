@@ -24,21 +24,23 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <form novalidate name="keyword-form" id="keyword-form" class="form-inline" role="form" ng-submit="searchPlaylists()">
-            <div class="form-group">
-              <label class="sr-only" for="input-keyword">keyword</label>
-              <input type="text" name="keyword" id="input-keyword" class="form-control" placeholder="keyword" ng-model="keyword" />
-            </div>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-          </form>
           <table class="table" ng-cloak>
+            <tr>
+              <td colspan="3">
+                <form novalidate name="keyword-form" id="keyword-form" class="form-inline" role="form" ng-submit="searchPlaylists()">
+                  <div class="form-group">
+                    <label class="sr-only" for="input-keyword">keyword</label>
+                    <input type="text" name="keyword" id="input-keyword" class="form-control" placeholder="keyword" ng-model="keyword" />
+                  </div>
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+              </td>
+            </tr>
             <tr id="playlist-{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
               <td><img src="{{playlist.artwork_url}}" /></td>
               <td><span class="text-muted">{{playlist.user.username}}</span><br /><strong>{{playlist.title}}</strong></td>
               <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
-          </table>
-          <table class="table" ng-cloak>
             <tr id="track-{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
               <td><img src="{{track.artwork_url}}" /></td>
               <td><span class="text-muted">{{track.user.username}}</span><br /><strong>{{track.title}}</strong></td>
