@@ -45,7 +45,7 @@ var playlistCtrl = function($scope)
     SC.get('/playlists/' + $scope.playlist.id, {}, function(playlist) {
       var tracks = playlist.tracks;
       for (var i in tracks) {
-          $scope.tracks.push(tracks[i]);
+        $scope.tracks.push(tracks[i]);
       }
       $('#loader').hide();
       $scope.$apply();
