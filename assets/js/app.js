@@ -21,9 +21,9 @@ var mainCtrl = function($scope)
   $scope.tracks    = [];
 
   $scope.searchPlaylists = function() {
+    $scope.playlists = [];
+    $scope.tracks    = [];
     SC.get('/playlists', { q: $scope.keyword }, function(playlists) {
-      $scope.playlists = [];
-      $scope.tracks    = [];
       for (var i in playlists) {
         $scope.playlists.push(playlists[i]);
       }
@@ -37,9 +37,9 @@ var playlistCtrl = function($scope)
   var mainScope = angular.element('#main').scope();
 
   $scope.getTracks = function() {
+    mainScope.playlists = [];
+    mainScope.tracks    = [];
     SC.get('/playlists/' + $scope.playlist.id, {}, function(playlist) {
-      mainScope.playlists = [];
-      mainScope.tracks    = [];
       var tracks = playlist.tracks;
       for (var i in tracks) {
           $scope.tracks.push(tracks[i]);
