@@ -6,6 +6,14 @@ table {
     margin: 0 !important;
 }
 
+td.left {
+    width: 100px;
+}
+
+td.right {
+    width: 40px;
+}
+
 img.icon-repeat {
     width: 24px;
     height: 24px;

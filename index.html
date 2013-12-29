@@ -37,14 +37,14 @@
               </td>
             </tr>
             <tr id="playlist-{{$index}}" ng-repeat="playlist in playlists" ng-controller="playlistCtrl">
-              <td><img src="{{playlist.artwork_url}}" /></td>
+              <td class="left"><img src="{{playlist.artwork_url}}" /></td>
               <td><span class="text-muted">{{playlist.user.username}}</span><br /><strong>{{playlist.title}}</strong></td>
-              <td><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
+              <td class="right"><button class="btn btn-default" ng-click="getTracks()"><span class="glyphicon glyphicon-download"></span></button></td>
             </tr>
             <tr id="track-{{$index}}" ng-repeat="track in tracks" ng-controller="trackCtrl">
-              <td><img src="{{track.artwork_url}}" /></td>
+              <td class="left"><img src="{{track.artwork_url}}" /></td>
               <td><span class="text-muted">{{track.user.username}}</span><br /><strong>{{track.title}}</strong></td>
-              <td><button class="btn btn-default" ng-click="addToMyTrack()"><span class="glyphicon glyphicon-plus"></span></button></td>
+              <td class="right"><button class="btn btn-default" ng-click="addToMyTrack()"><span class="glyphicon glyphicon-plus"></span></button></td>
             </tr>
           </table>
         </div>
@@ -63,9 +63,9 @@
                 </td>
               </tr>
               <tr id="my-track-{{$index}}" ng-repeat="myTrack in myTracks" ng-controller="myTrackCtrl">
-                <td><img src="{{myTrack.artwork_url}}" /></td>
+                <td class="left"><img src="{{myTrack.artwork_url}}" /></td>
                 <td><span class="text-muted">{{myTrack.user.username}}</span><br /><strong>{{myTrack.title}}</strong></td>
-                <td><button class="btn btn-default" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
+                <td class="right"><button class="btn btn-default" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
               </tr>
             </table>
           </div>
