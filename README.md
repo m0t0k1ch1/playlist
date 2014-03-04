@@ -1,5 +1,5 @@
 repeat-beat
-===========
+=====
 
 [repeat-beat](http://repeat-beat.k1ch1.com)
 
