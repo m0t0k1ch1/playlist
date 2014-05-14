@@ -3,7 +3,7 @@ repeat-beat
 
 [repeat-beat](http://repeat-beat.k1ch1.com)
 
-an awesome music player using 'soundcloud' API, built with AngularJS
+an awesome music player using 'soundcloud' API, built with [AngularJS](https://github.com/angular/angular.js)
 
 ## About 'repeat-beat'
 
